@@ -40,11 +40,6 @@ public class DeathRaceWorld extends World
         super(WORLD_WIDTH, WORLD_HEIGHT, 1, false); 
         if (gameStarted)
         {
-<<<<<<< HEAD
-          
-=======
-
->>>>>>> refs/remotes/origin/master
             GreenfootImage background = getBackground();
             background.setColor(Color.black);
             
