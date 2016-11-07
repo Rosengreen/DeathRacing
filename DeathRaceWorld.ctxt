@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=DeathRaceWorld
+comment0.text=\r\n\ The\ Death\ Race\ is\ starting,\ fasten\ your\ seatbelts.\r\n\ \r\n\ @author\ Group\ 3\ \r\n\ @version\ 1\r\n
+comment1.params=
+comment1.target=DeathRaceWorld()
+comment2.params=gameStarted
+comment2.target=DeathRaceWorld(boolean)
+comment2.text=\r\n\ Constructor\ for\ objects\ of\ class\ DeathRaceWorld.\r\n
+comment3.params=
+comment3.target=void\ act()
+comment4.params=
+comment4.target=void\ changeImage()
+comment4.text=\r\n\ Change\ the\ image\ on\ runtime\ to\ give\ the\ idea\ of\ motion.\r\n
+numComments=5
