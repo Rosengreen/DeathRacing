@@ -21,27 +21,34 @@ public class IntroWorld extends World
         super(WORLD_WIDTH, WORLD_HEIGHT, 1);
         setBackground("StartPage0000.png");
         backCounter = 0;
+
     }
-    
+
     /*
     public void playTheme()
     {
-        knight.playLoop();
+    knight.playLoop();
     }
-    */
-   
+     */
+
     public void act()
     {
         switchImage();
         String key = Greenfoot.getKey();
+        final GamePad pad1 = GamePad.getGamePads()[0];
+
         if (key != null && key.equals("enter"))
+        {
+            Greenfoot.setWorld(new DeathRaceWorld(true));
+        }
+        if (pad1.isDown(GamePad.Button.ACTION_RIGHT))
         {
             Greenfoot.setWorld(new DeathRaceWorld(true));
         }
         backCounter++;
         //playTheme();
     }
-    
+
     /**
      * Alternate the crab's image between image1 and image2.
      */
@@ -60,5 +67,5 @@ public class IntroWorld extends World
             backCounter = 0;
         }
     }
-    
+
 }

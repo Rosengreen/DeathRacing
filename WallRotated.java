@@ -12,6 +12,7 @@ public class WallRotated extends Wall
     {
         this.getImage().scale(100, 20);
         this.getImage().rotate(45);
+        this.getImage().setTransparency(0);
     }
     
     /**

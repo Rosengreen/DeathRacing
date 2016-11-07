@@ -22,6 +22,7 @@ public class DeathRaceWorld extends World
         // calling the other constructor with gameStarted = false.
         this(true);    
         //setPaintOrder(Paddle.class, Ball.class, SecondaryPaddle.class);
+        Greenfoot.setSpeed(50);
         gameBackCounter = 0;
         image1 = new GreenfootImage("Back10000.png");
         image2 = new GreenfootImage("Back10000.png");
@@ -39,16 +40,13 @@ public class DeathRaceWorld extends World
         super(WORLD_WIDTH, WORLD_HEIGHT, 1, false); 
         if (gameStarted)
         {
-
             GreenfootImage background = getBackground();
             background.setColor(Color.black);
             
             // Create a new world with WORLD_WIDTHxWORLD_HEIGHT cells with a cell size of 1x1 pixels.
             //addObject(new Ball(), WORLD_WIDTH/2, WORLD_HEIGHT/2);
-            addObject(new Player1(), 873, WORLD_HEIGHT - 43);
-            addObject(new Player2(), 873, WORLD_HEIGHT - 78);
-            addObject(new Player3(), 837, WORLD_HEIGHT - 43);
-            addObject(new Player4(), 837, WORLD_HEIGHT - 78);
+            addObject(new Player("w","s","a","d"), 873, WORLD_HEIGHT - 43);
+         addObject(new Player("up","down","left","right"), 873, WORLD_HEIGHT - 23);
             //addObject(new SecondaryPaddle(100, 20), this.getWidth(), Greenfoot.getRandomNumber(WORLD_HEIGHT/2));
 
 
