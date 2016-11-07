@@ -51,4 +51,28 @@ public class Player1 extends Actor
             turn(3);
         }
     }
+    
+    /**
+     * 
+     */
+    public void collosionWall()
+    {
+        //if(getOneObjectAtOffset(getRotation()
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

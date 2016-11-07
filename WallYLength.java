@@ -11,6 +11,7 @@ public class WallYLength extends Wall
     public WallYLength()
     {
         this.getImage().scale(10, 80);
+        this.getImage().setTransparency(0);
     }
     
     /**
