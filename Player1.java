@@ -42,11 +42,11 @@ public class Player1 extends Actor
         {
             move(-1);
         }
-        if (Greenfoot.isKeyDown("left")) 
+        if (Greenfoot.isKeyDown("left") && Greenfoot.isKeyDown("up")) 
         {
             turn(-3);
         }
-        if (Greenfoot.isKeyDown("right")) 
+        if (Greenfoot.isKeyDown("right") && Greenfoot.isKeyDown("up")) 
         {
             turn(3);
         }
