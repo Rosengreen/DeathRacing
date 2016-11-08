@@ -1,30 +1,33 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Player2 here.
+ * Write a description of class Player1 here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Player2 extends Actor
+public class Player extends SmoothMover
 {
     private GreenfootImage image1;
-    
+
     /**
      * Create a player and initialize its image.
      */
-    public Player2()
+    public Player(String keyUp, String keyDown, String keyLeft, String keyRight)
     {
-        image1 = new GreenfootImage("Player20000.png");
+        super(keyUp,keyDown,keyLeft,keyRight);
+        image1 = new GreenfootImage("Player10000.png");
         setImage(image1);
+        
     }
-    
+  
     /**
-     * Act - do whatever the Player2 wants to do. This method is called whenever
+     * Act - do whatever the Player1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
+        smoothMove();
         checkKeypress();
     }
     
@@ -34,19 +37,12 @@ public class Player2 extends Actor
      */
     public void checkKeypress()
     {
-        if (Greenfoot.isKeyDown("W")) 
-        {
-            move(2);
-        }
-        if (Greenfoot.isKeyDown("S")) 
-        {
-            move(-1);
-        }
-        if (Greenfoot.isKeyDown("A")) 
+        
+        if (Greenfoot.isKeyDown(keyLeft) && super.speed > 0) 
         {
             turn(-3);
         }
-        if (Greenfoot.isKeyDown("D")) 
+        if (Greenfoot.isKeyDown(keyRight)&& super.speed > 0) 
         {
             turn(3);
         }
