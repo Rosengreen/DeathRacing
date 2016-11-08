@@ -13,13 +13,13 @@ public class WallYLength extends Wall
         this.getImage().scale(10, 80);
         this.getImage().setTransparency(0);
     }
-    
+
     /**
      * Act - do whatever the WallYLength wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        
+
     }    
 }

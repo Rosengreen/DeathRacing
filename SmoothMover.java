@@ -28,7 +28,8 @@ public class SmoothMover extends Actor
     protected String keyRight;
     protected String keyLeft;
     protected String keyUp;
-    
+
+
     public SmoothMover(String keyUp, String keyDown, String keyLeft, String keyRight){
         maxspeed = 3;
         this.keyDown = keyDown;
@@ -37,12 +38,8 @@ public class SmoothMover extends Actor
         this.keyRight=keyRight;
     }
 
-
-
     public void act() {
-
         smoothMove();
-
     }
 
     /**
@@ -90,7 +87,7 @@ public class SmoothMover extends Actor
         move(speed);
 
     }
-    
+
     /**
      * Sets the speed of the player.
      */
@@ -98,7 +95,7 @@ public class SmoothMover extends Actor
     {
         this.speed = speed;
     }
-    
+
     /**
      * Return the speed of the player.
      */

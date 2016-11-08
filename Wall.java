@@ -10,9 +10,9 @@ public class Wall extends Actor
 {
     public Wall()
     {
-        
+
     }
-    
+
     /**
      * Act - do whatever the Wall wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

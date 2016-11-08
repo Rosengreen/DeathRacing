@@ -12,7 +12,6 @@ public class IntroWorld extends World
     private static final int WORLD_WIDTH = 1280;
     private static final int WORLD_HEIGHT = 600;
     private int backCounter = 0;
-    //GreenfootSound knight = new GreenfootSound("KnightRider.mp3");
     /**
      * Constructor for objects of class IntroWorld.
      */
@@ -23,13 +22,6 @@ public class IntroWorld extends World
         backCounter = 0;
 
     }
-
-    /*
-    public void playTheme()
-    {
-    knight.playLoop();
-    }
-     */
 
     public void act()
     {
@@ -46,7 +38,6 @@ public class IntroWorld extends World
             Greenfoot.setWorld(new DeathRaceWorld(true));
         }
         backCounter++;
-        //playTheme();
     }
 
     /**
