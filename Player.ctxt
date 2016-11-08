@@ -10,4 +10,10 @@ comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Player1\ wants\ to\ do.\ This\ me
 comment3.params=
 comment3.target=void\ checkKeypress()
 comment3.text=\r\n\ Check\ whether\ a\ control\ key\ on\ the\ keyboard\ has\ been\ pressed.\r\n\ If\ it\ has,\ react\ accordingly.\r\n
-numComments=4
+comment4.params=
+comment4.target=void\ collisionWall()
+comment4.text=\r\n\ \r\n
+comment5.params=
+comment5.target=void\ timerOn()
+comment5.text=\r\n\ When\ the\ player\ can't\ bounce,\ starts\ a\ timer,\ when\ the\ timer\ reaches\ BOUNCE_TIMER.\ Set\ canBounce\ \=\ true\ and\ reset\ timer.\r\n
+numComments=6
