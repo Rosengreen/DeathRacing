@@ -16,7 +16,6 @@ public class Player extends SmoothMover
     private int currentPowerUp;
     private PowerUp[] powerUpArray;
     private int player;
-   
 
     /**
      * Create a player and initialize its image.
@@ -30,27 +29,28 @@ public class Player extends SmoothMover
         currentPowerUp = 0;
         powerUpArray = new PowerUp[AMOUNT_OF_POWER_UPS];
     }
-  
+
     /**
      * Act - do whatever the Player1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        smoothMove();
+        gamePadAccel();
+        keyboardAccel();
         checkKeypress();
         collisionWall();
         timerOn();
         collisionPowerUp();
     }
-    
+
     /**
      * Check whether a control key on the keyboard has been pressed.
      * If it has, react accordingly.
      */
     public void checkKeypress()
     {
-        
+
         if (Greenfoot.isKeyDown(keyLeft) && super.speed > 0) 
         {
             turn(-3);
@@ -60,7 +60,7 @@ public class Player extends SmoothMover
             turn(3);
         }
     }
-    
+
     /**
      * 
      */
@@ -83,7 +83,7 @@ public class Player extends SmoothMover
             }            
         }
     }
-    
+
     /**
      * When the player can't bounce, starts a timer, when the timer reaches BOUNCE_TIMER. Set canBounce = true and reset timer.
      */
@@ -99,7 +99,7 @@ public class Player extends SmoothMover
             timer = 0;
         }
     }        
-    
+
     private void collisionPowerUp()
     {
         PowerUp powerUp = (PowerUp) getOneObjectAtOffset(0, 0, PowerUp.class);
@@ -109,17 +109,17 @@ public class Player extends SmoothMover
             getWorld().removeObject(powerUp);
         }
     }
-    
+
     public void setWeapon(int weapon)
     {
         for(int i = 0; i < powerUpArray.length; i++)
         {
             if(weapon == 1)
             {
-                
+
             }
         }
-        
+
     }
-    
+
 }

@@ -29,7 +29,7 @@ public class SmoothMover extends Actor
     protected String keyLeft;
     protected String keyUp;
     protected GamePad pad;
-    
+
     public SmoothMover(String keyUp, String keyDown, String keyLeft, String keyRight, GamePad pad){
         maxspeed = 3;
         this.keyDown = keyDown;
@@ -39,12 +39,9 @@ public class SmoothMover extends Actor
         this.pad=pad;
     }
 
-
-
     public void act() {
-
-        smoothMove();
-
+      gamePadAccel();
+      keyboardAccel();
     }
 
     /**
@@ -74,29 +71,43 @@ public class SmoothMover extends Actor
 
         setLocation(x, y);
     }
-
-    public void smoothMove() {
-        
-        if(pad.isDown(GamePad.Button.ACTION_RIGHT))
-           {
-               System.out.println(""+pad.toString());
-           }
-        if (Greenfoot.isKeyDown(keyUp)) {
-
-            speed += 0.04;
-            if (speed > maxspeed) {speed = maxspeed;}
-
-        } else {
-
-            speed -= 0.03;
-            if (speed < 0) {speed = 0;}
-
-        }
-
-        move(speed);
-
-    }
     
+    public void gamePadAccel()
+    {
+        if (pad.isDown(GamePad.Button.L2)) {
+            speed += 0.04;
+            if (speed > maxspeed) 
+            {
+                speed = maxspeed;
+            }
+        } else {
+            speed -= 0.03;
+            if (speed < 0) 
+            {
+                speed = 0;
+            }
+        }
+        move(speed);
+    }
+
+    public void keyboardAccel()
+    {
+        if (Greenfoot.isKeyDown(keyUp)) {
+            speed += 0.04;
+            if (speed > maxspeed) 
+            {
+                speed = maxspeed;
+            }
+        } else {
+            speed -= 0.03;
+            if (speed < 0) 
+            {
+                speed = 0;
+            }
+        }
+        move(speed);
+    }
+
     /**
      * Sets the speed of the player.
      */
@@ -104,7 +115,7 @@ public class SmoothMover extends Actor
     {
         this.speed = speed;
     }
-    
+
     /**
      * Return the speed of the player.
      */

@@ -33,6 +33,7 @@ public class IntroWorld extends World
 
     public void act()
     {
+      
         switchImage();
         String key = Greenfoot.getKey();
         final GamePad pad1 = GamePad.getGamePads()[0];

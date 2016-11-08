@@ -60,7 +60,7 @@ public class DeathRaceWorld extends World
 
     public void act()
     {
-        
+          GamePad.runConfigurePad();
         changeImage();
         gameBackCounter++;
     }
