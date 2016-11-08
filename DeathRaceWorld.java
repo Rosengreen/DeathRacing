@@ -43,10 +43,11 @@ public class DeathRaceWorld extends World
             GreenfootImage background = getBackground();
             background.setColor(Color.black);
             //Add Players.
-            addObject(new Player("up","down","left","right","Player10000.png", 1), 873, WORLD_HEIGHT - 43);
-            addObject(new Player("w","s","a","d","Player20000.png", 2), 873, WORLD_HEIGHT - 78);
-            addObject(new Player("t","g","f","h","Player30000.png", 3), 837, WORLD_HEIGHT - 43);
-            addObject(new Player("i","k","j","l","Player40000.png", 4), 837, WORLD_HEIGHT - 78);
+            final GamePad pad1 = GamePad.getGamePads()[0];
+            addObject(new Player("up","down","left","right","Player10000.png", 1, pad1), 873, WORLD_HEIGHT - 43);
+            addObject(new Player("w","s","a","d","Player20000.png", 2, pad1), 873, WORLD_HEIGHT - 78);
+            addObject(new Player("t","g","f","h","Player30000.png", 3, pad1), 837, WORLD_HEIGHT - 43);
+            addObject(new Player("i","k","j","l","Player40000.png", 4, pad1), 837, WORLD_HEIGHT - 78);
             //Add PowerUps.
             addObject(new PowerUp("Player10000.png"), 923, WORLD_HEIGHT - 78);
 

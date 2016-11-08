@@ -28,13 +28,15 @@ public class SmoothMover extends Actor
     protected String keyRight;
     protected String keyLeft;
     protected String keyUp;
+    protected GamePad pad;
     
-    public SmoothMover(String keyUp, String keyDown, String keyLeft, String keyRight){
+    public SmoothMover(String keyUp, String keyDown, String keyLeft, String keyRight, GamePad pad){
         maxspeed = 3;
         this.keyDown = keyDown;
         this.keyUp=keyUp;
         this.keyLeft=keyLeft;
         this.keyRight=keyRight;
+        this.pad=pad;
     }
 
 
@@ -74,7 +76,11 @@ public class SmoothMover extends Actor
     }
 
     public void smoothMove() {
-
+        
+        if(pad.isDown(GamePad.Button.ACTION_RIGHT))
+           {
+               System.out.println(""+pad.toString());
+           }
         if (Greenfoot.isKeyDown(keyUp)) {
 
             speed += 0.04;

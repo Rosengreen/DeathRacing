@@ -36,7 +36,7 @@ public class IntroWorld extends World
         switchImage();
         String key = Greenfoot.getKey();
         final GamePad pad1 = GamePad.getGamePads()[0];
-
+        
         if (key != null && key.equals("enter"))
         {
             Greenfoot.setWorld(new DeathRaceWorld(true));

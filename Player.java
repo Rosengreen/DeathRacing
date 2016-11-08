@@ -21,9 +21,9 @@ public class Player extends SmoothMover
     /**
      * Create a player and initialize its image.
      */
-    public Player(String keyUp, String keyDown, String keyLeft, String keyRight, String image, int player)
+    public Player(String keyUp, String keyDown, String keyLeft, String keyRight, String image, int player, GamePad pad)
     {        
-        super(keyUp,keyDown,keyLeft,keyRight);
+        super(keyUp,keyDown,keyLeft,keyRight,pad);
         this.player = player;
         setImage(image);
         canBounce = true;
@@ -75,13 +75,9 @@ public class Player extends SmoothMover
                 {
                     setSpeed(-1);                    
                 }
-                else if(getSpeed() < 0)
-                {
-                    setSpeed(1);
-                }
                 else
                 {
-                    setSpeed(-2);
+                    setSpeed(1);
                 }
                 canBounce = false;
             }            
