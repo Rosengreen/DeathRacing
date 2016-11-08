@@ -75,9 +75,13 @@ public class Player extends SmoothMover
                 {
                     setSpeed(-1);                    
                 }
-                else
+                else if(getSpeed() < 0)
                 {
                     setSpeed(1);
+                }
+                else
+                {
+                    setSpeed(-2);
                 }
                 canBounce = false;
             }            
