@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.target=Player
 comment0.text=\r\n\ Write\ a\ description\ of\ class\ Player1\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=keyUp\ keyDown\ keyLeft\ keyRight
-comment1.target=Player(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment1.params=keyUp\ keyDown\ keyLeft\ keyRight\ image
+comment1.target=Player(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
 comment1.text=\r\n\ Create\ a\ player\ and\ initialize\ its\ image.\r\n
 comment2.params=
 comment2.target=void\ act()
