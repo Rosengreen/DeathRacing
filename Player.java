@@ -8,19 +8,20 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends SmoothMover
 {
+
     private final int BOUNCE_TIMER = 2;
     private GreenfootImage image1;
     private boolean canBounce;
     private int timer;
    
+
     /**
      * Create a player and initialize its image.
      */
-    public Player(String keyUp, String keyDown, String keyLeft, String keyRight)
+    public Player(String keyUp, String keyDown, String keyLeft, String keyRight, String image)
     {
         super(keyUp,keyDown,keyLeft,keyRight);
-        image1 = new GreenfootImage("Player10000.png");
-        setImage(image1);
+        setImage(image);
         canBounce = true;
     }
   
