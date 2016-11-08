@@ -11,10 +11,19 @@ public class PowerUp extends Actor
     private int theKindOfPowerUp;
     private String imageOfPowerUp;
     private String[] visualsOfPowerUps = {"minePowerUp.png", "oilPowerUp.png", "missilePowerUp.png"};
+    private boolean beenPickedUp;
+    private boolean timerStarted;
+    private int timer;
+    private int xCoordinate;
+    private int yCoordinate;
     
-    public PowerUp()
+    public PowerUp(int xCoordinate, int yCoordinate)
     {
         theKindOfPowerUp = Greenfoot.getRandomNumber(visualsOfPowerUps.length);
+        this.xCoordinate = xCoordinate;
+        this.yCoordinate = yCoordinate;
+        beenPickedUp = false;
+        timerStarted = false;
     }
     
     /**
@@ -23,7 +32,7 @@ public class PowerUp extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        relocate();
     }    
     
     /**
@@ -42,4 +51,32 @@ public class PowerUp extends Actor
         String nameOfVisual = visualsOfPowerUps[theKindOfPowerUp];
         return nameOfVisual;
     }
+    
+    /**
+     * Set beenPickedUp.
+     */
+    public void setBeenPickedUp(boolean beenPickedUp)
+    {
+        this.beenPickedUp = beenPickedUp;
+    }
+    
+    private void relocate()
+    {
+        if(beenPickedUp == true && timerStarted == false)
+        {
+            timer = 0;
+            beenPickedUp = false;
+            timerStarted = true;
+        }
+        if(timerStarted)
+        {
+            timer++;
+        }
+        if(timer >= 200)
+        {
+            setLocation(xCoordinate, yCoordinate);
+            timerStarted = false;
+            theKindOfPowerUp = Greenfoot.getRandomNumber(visualsOfPowerUps.length);
+        }
+    }    
 }

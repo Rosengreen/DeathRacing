@@ -8,6 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Oil extends Weapon
 {
+    
+    public Oil()
+    {
+        setImage("oilActive.png");
+    }
     /**
      * Act - do whatever the Oil wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

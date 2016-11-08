@@ -120,7 +120,8 @@ public class Player extends SmoothMover
         {
             currentPowerUp = powerUp.getKindOfPowerUp() + 1;
             displayField.setImage(powerUp.getVisualOfPowerUp());
-            getWorld().removeObject(powerUp);            
+            powerUp.setLocation(-50, -50);
+            powerUp.setBeenPickedUp(true);
         }
     }
     

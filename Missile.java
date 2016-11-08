@@ -8,10 +8,33 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Missile extends Weapon
 {
+    private final int SWITCH_IMAGE = 10;
+    private final int SWITCH_EXPLOSION_IMAGE = 10;
+    private GreenfootImage imageOne;
+    private GreenfootImage imageTwo;
+    private GreenfootImage explosionOne;
+    private GreenfootImage explosionTwo;
+    private GreenfootImage explosionThree;
+    private GreenfootImage explosionFour;
+    private int timer;
+    private int explosionTimer;
+    private int explosionImageCounter;
+    private boolean explosionStarted;
     
     public Missile(int rotation)
     {
+        imageOne = new GreenfootImage("missileActiveOne.png");
+        imageTwo = new GreenfootImage("missileActiveTwo.png");
+        explosionOne = new GreenfootImage("missileExplosionOne.png");
+        explosionTwo = new GreenfootImage("missileExplosionTwo.png");
+        explosionThree = new GreenfootImage("missileExplosionThree.png");
+        explosionFour = new GreenfootImage("missileExplosionFour.png");
+        setImage(imageOne);
         setRotation(rotation);
+        timer = 0;
+        explosionTimer = 0;
+        explosionImageCounter = 0;
+        explosionStarted = false;
     }
     
     /**
@@ -20,6 +43,89 @@ public class Missile extends Weapon
      */
     public void act() 
     {
-        move(5);
-    }    
+        movement();
+        collisionWall();
+        controlTimer();
+        timer++;
+        explosionAnimation();
+    } 
+    
+    private void movement()
+    {
+        if(!explosionStarted)
+        {
+            move(5);
+        }
+    }
+    
+    /**
+     * Remove the object if it hits a wall.
+     */
+    private void collisionWall()
+    {
+        Wall wall = (Wall) getOneIntersectingObject(Wall.class);
+        if(wall != null)
+        {
+            //getWorld().removeObject(this)
+            explosionStarted = true;
+        }
+    }
+    
+    /**
+     * Runs the animation of the explosion and then removes the object.
+     */
+    private void explosionAnimation()
+    {
+        if(explosionStarted)
+        {
+            if(explosionImageCounter == 0)
+            {
+                setImage(explosionOne);
+            }
+            else if(explosionImageCounter == 1 * SWITCH_EXPLOSION_IMAGE)
+            {
+                setImage(explosionTwo);
+            }
+            else if(explosionImageCounter == 2 * SWITCH_EXPLOSION_IMAGE)
+            {
+                setImage(explosionThree);
+            }
+            else if(explosionImageCounter == 3 * SWITCH_EXPLOSION_IMAGE)
+            {
+                setImage(explosionFour);
+            }
+            else if(explosionImageCounter >= 4 * SWITCH_EXPLOSION_IMAGE)
+            {
+                getWorld().removeObject(this);
+            }
+            explosionImageCounter++;
+        }
+    }
+    
+    /**
+     * Switch the image of the missile.
+     */
+    private void animation()
+    {
+        if(getImage() == imageOne)
+        {
+            setImage(imageTwo);
+        }
+        else
+        {
+           setImage(imageOne); 
+        }
+    }
+    
+    /**
+     * Checks whether it's time to switch image.
+     */
+    private void controlTimer()
+    {
+        if(timer >= 10 && explosionStarted != true)
+        {
+            animation();
+            timer = 0;
+        }
+    }
 }

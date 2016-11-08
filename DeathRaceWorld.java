@@ -30,6 +30,7 @@ public class DeathRaceWorld extends World
         image4 = new GreenfootImage("Back10000.png");
         setBackground(image1);
         prepare();
+        setPaintOrder(Player.class);
     }
 
     /**
@@ -57,8 +58,9 @@ public class DeathRaceWorld extends World
             addObject(new Player("t","g","f","h", "y", "Player30000.png", 3, disThree), 837, WORLD_HEIGHT - 43);
             addObject(new Player("i","k","j","l", "o", "Player40000.png", 4, disFour), 837, WORLD_HEIGHT - 78);
             //Add PowerUps.
-            addObject(new PowerUp(), 923, WORLD_HEIGHT - 78);
-            addObject(new PowerUp(), 500, 500);
+            addObject(new PowerUp(1000 - Greenfoot.getRandomNumber(800), WORLD_HEIGHT - 20 - Greenfoot.getRandomNumber(80)), 1000 - Greenfoot.getRandomNumber(800), WORLD_HEIGHT - 20 - Greenfoot.getRandomNumber(80));
+            addObject(new PowerUp(250 + Greenfoot.getRandomNumber(250), WORLD_HEIGHT - 120 - Greenfoot.getRandomNumber(100)), 250 + Greenfoot.getRandomNumber(250), WORLD_HEIGHT - 120 - Greenfoot.getRandomNumber(100));
+            addObject(new PowerUp(250 + Greenfoot.getRandomNumber(250), 40 + Greenfoot.getRandomNumber(100)), 250 + Greenfoot.getRandomNumber(250), 40 + Greenfoot.getRandomNumber(100));
             
             
 
