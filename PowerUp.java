@@ -10,12 +10,11 @@ public class PowerUp extends Actor
 {
     private int theKindOfPowerUp;
     private String imageOfPowerUp;
+    private String[] visualsOfPowerUps = {"minePowerUp.png", "oilPowerUp.png", "missilePowerUp.png"};
     
-    public PowerUp(String image)
+    public PowerUp()
     {
-        theKindOfPowerUp = Greenfoot.getRandomNumber(4) +1;
-        imageOfPowerUp = image;
-        setImage(image);
+        theKindOfPowerUp = Greenfoot.getRandomNumber(visualsOfPowerUps.length);
     }
     
     /**
@@ -28,15 +27,19 @@ public class PowerUp extends Actor
     }    
     
     /**
-     * Return the kind of powerUp.
+     * Return the kind of PowerUp.
      */
     public int getKindOfPowerUp()
     {
         return theKindOfPowerUp;
     }
     
-    public GreenfootImage getImage()
+    /**
+     * Gets the name of the png for the PowerUp.
+     */
+    public String getVisualOfPowerUp()
     {
-        return null;
+        String nameOfVisual = visualsOfPowerUps[theKindOfPowerUp];
+        return nameOfVisual;
     }
 }

@@ -10,24 +10,26 @@ public class Player extends SmoothMover
 {
     private final int AMOUNT_OF_POWER_UPS = 4;
     private final int BOUNCE_TIMER = 2;
+	private final String EMPTY_POWER_UP_FIELD = "emptyPowerUp.png";
     private GreenfootImage image1;
     private boolean canBounce;
     private int timer;
-<<<<<<< HEAD
     private int currentPowerUp;
     private PowerUp[] powerUpArray;
     private int player;
-   
-=======
->>>>>>> origin/GamePad
+    private DisplayPowerUp displayField;
+	private String keyShoot;
 
     /**
      * Create a player and initialize its image.
      */
-    public Player(String keyUp, String keyDown, String keyLeft, String keyRight, String image, int player)
+    public Player(String keyUp, String keyDown, String keyLeft, String keyRight, String keyShoot, String image, int player, DisplayPowerUp display)
     {        
         super(keyUp,keyDown,keyLeft,keyRight);
         this.player = player;
+		this.keyShoot = keyShoot;
+        displayField = display;
+		displayField.setImage(EMPTY_POWER_UP_FIELD);
         setImage(image);
         canBounce = true;
         currentPowerUp = 0;
@@ -45,13 +47,14 @@ public class Player extends SmoothMover
         collisionWall();
         timerOn();
         collisionPowerUp();
+		useWeapon();
     }
 
     /**
      * Check whether a control key on the keyboard has been pressed.
      * If it has, react accordingly.
      */
-    public void checkKeypress()
+    private void checkKeypress()
     {
 
         if (Greenfoot.isKeyDown(keyLeft) && super.speed > 0) 
@@ -65,9 +68,9 @@ public class Player extends SmoothMover
     }
 
     /**
-     * 
+     * Makes the player unable to leave the track.
      */
-    public void collisionWall()
+    private void collisionWall()
     {
         Wall wall = (Wall) getOneObjectAtOffset(0, 0, Wall.class);
         if(wall != null)
@@ -105,32 +108,62 @@ public class Player extends SmoothMover
             canBounce = true;
             timer = 0;
         }
-    }        
-<<<<<<< HEAD
+    }
     
+	/**
+	*Pick up a powerUp when driving over one.
+	*/
     private void collisionPowerUp()
     {
         PowerUp powerUp = (PowerUp) getOneObjectAtOffset(0, 0, PowerUp.class);
         if(powerUp != null)
         {
-            currentPowerUp = powerUp.getKindOfPowerUp();
-            getWorld().removeObject(powerUp);
+            currentPowerUp = powerUp.getKindOfPowerUp() + 1;
+            displayField.setImage(powerUp.getVisualOfPowerUp());
+            getWorld().removeObject(powerUp);            
         }
     }
     
-    public void setWeapon(int weapon)
+	/**
+	*Checks if the player has a weapon. If yes, create a reference to a new weapon of the given type.
+	*/
+    private Weapon getWeapon()
     {
-        for(int i = 0; i < powerUpArray.length; i++)
-        {
-            if(weapon == 1)
-            {
-                
-            }
-        }
-        
+		Weapon weapon;
+		if(currentPowerUp != 0)
+		{
+			if(currentPowerUp == 1)
+			{
+				weapon = new Mine();
+			}
+			else if(currentPowerUp == 2)
+			{
+				weapon = new Oil();
+			}
+			else
+			{
+				weapon = new Missile(getRotation());
+			}
+		}
+		else
+		{
+			weapon = null;
+		}
+		return weapon;
     }
+
+	private void useWeapon()
+	{
+		Weapon weapon = getWeapon();
+		if(weapon != null && Greenfoot.isKeyDown(keyShoot))
+		{
+			getWorld().addObject(weapon, getX(), getY());
+			displayField.setImage(EMPTY_POWER_UP_FIELD);
+			currentPowerUp = 0;
+		}
+	}
     
-=======
+    
     /*
     private String gamepad()
     {
@@ -144,5 +177,4 @@ public class Player extends SmoothMover
     final GamePad pad4 = GamePad.getGamePads()[3];
     return null;
     }*/
->>>>>>> origin/GamePad
 }

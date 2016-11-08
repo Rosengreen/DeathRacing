@@ -42,21 +42,25 @@ public class DeathRaceWorld extends World
         {
             GreenfootImage background = getBackground();
             background.setColor(Color.black);
-<<<<<<< HEAD
+            //Adds the displayContainers for the PowerUps.
+            DisplayPowerUp disOne = new DisplayPlayerOne();
+            addObject(disOne, 90, 70);
+            DisplayPowerUp disTwo = new DisplayPlayerTwo();
+            addObject(disTwo, 90, 225);
+            DisplayPowerUp disThree = new DisplayPlayerThree();
+            addObject(disThree, 90, 377 ); 
+            DisplayPowerUp disFour = new DisplayPlayerFour();
+            addObject(disFour, 90, 525);
             //Add Players.
-            addObject(new Player("up","down","left","right","Player10000.png", 1), 873, WORLD_HEIGHT - 43);
-            addObject(new Player("w","s","a","d","Player20000.png", 2), 873, WORLD_HEIGHT - 78);
-            addObject(new Player("t","g","f","h","Player30000.png", 3), 837, WORLD_HEIGHT - 43);
-            addObject(new Player("i","k","j","l","Player40000.png", 4), 837, WORLD_HEIGHT - 78);
+            addObject(new Player("up","down","left","right", "space", "Player10000.png", 1, disOne), 873, WORLD_HEIGHT - 43);
+            addObject(new Player("w","s","a","d", "e", "Player20000.png", 2, disTwo), 873, WORLD_HEIGHT - 78);
+            addObject(new Player("t","g","f","h", "y", "Player30000.png", 3, disThree), 837, WORLD_HEIGHT - 43);
+            addObject(new Player("i","k","j","l", "o", "Player40000.png", 4, disFour), 837, WORLD_HEIGHT - 78);
             //Add PowerUps.
-            addObject(new PowerUp("Player10000.png"), 923, WORLD_HEIGHT - 78);
-=======
-
-            addObject(new Player("up","down","left","right","Player10000.png"), 873, WORLD_HEIGHT - 43);
-            addObject(new Player("w","s","a","d","Player20000.png"), 873, WORLD_HEIGHT - 78);
-            addObject(new Player("t","g","f","h","Player30000.png"), 837, WORLD_HEIGHT - 43);
-            addObject(new Player("i","k","j","l","Player40000.png"), 837, WORLD_HEIGHT - 78);
->>>>>>> origin/GamePad
+            addObject(new PowerUp(), 923, WORLD_HEIGHT - 78);
+            addObject(new PowerUp(), 500, 500);
+            
+            
 
         }
         else
@@ -108,6 +112,8 @@ public class DeathRaceWorld extends World
      */
     private void prepare()
     {
+        
+        
         WallXLength wallxlength = new WallXLength();
         addObject(wallxlength,805,152);
         WallXLength wallxlength2 = new WallXLength();
