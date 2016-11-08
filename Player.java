@@ -8,21 +8,27 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends SmoothMover
 {
-
+    private final int AMOUNT_OF_POWER_UPS = 4;
     private final int BOUNCE_TIMER = 2;
     private GreenfootImage image1;
     private boolean canBounce;
     private int timer;
+    private int currentPowerUp;
+    private PowerUp[] powerUpArray;
+    private int player;
    
 
     /**
      * Create a player and initialize its image.
      */
-    public Player(String keyUp, String keyDown, String keyLeft, String keyRight, String image)
-    {
+    public Player(String keyUp, String keyDown, String keyLeft, String keyRight, String image, int player)
+    {        
         super(keyUp,keyDown,keyLeft,keyRight);
+        this.player = player;
         setImage(image);
         canBounce = true;
+        currentPowerUp = 0;
+        powerUpArray = new PowerUp[AMOUNT_OF_POWER_UPS];
     }
   
     /**
@@ -35,6 +41,7 @@ public class Player extends SmoothMover
         checkKeypress();
         collisionWall();
         timerOn();
+        collisionPowerUp();
     }
     
     /**
@@ -92,4 +99,27 @@ public class Player extends SmoothMover
             timer = 0;
         }
     }        
+    
+    private void collisionPowerUp()
+    {
+        PowerUp powerUp = (PowerUp) getOneObjectAtOffset(0, 0, PowerUp.class);
+        if(powerUp != null)
+        {
+            currentPowerUp = powerUp.getKindOfPowerUp();
+            getWorld().removeObject(powerUp);
+        }
+    }
+    
+    public void setWeapon(int weapon)
+    {
+        for(int i = 0; i < powerUpArray.length; i++)
+        {
+            if(weapon == 1)
+            {
+                
+            }
+        }
+        
+    }
+    
 }
