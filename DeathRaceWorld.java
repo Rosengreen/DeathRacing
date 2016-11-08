@@ -46,7 +46,7 @@ public class DeathRaceWorld extends World
             // Create a new world with WORLD_WIDTHxWORLD_HEIGHT cells with a cell size of 1x1 pixels.
             //addObject(new Ball(), WORLD_WIDTH/2, WORLD_HEIGHT/2);
             addObject(new Player("w","s","a","d"), 873, WORLD_HEIGHT - 43);
-         addObject(new Player("up","down","left","right"), 873, WORLD_HEIGHT - 23);
+            addObject(new Player("up","down","left","right"), 823, WORLD_HEIGHT - 23);
             //addObject(new SecondaryPaddle(100, 20), this.getWidth(), Greenfoot.getRandomNumber(WORLD_HEIGHT/2));
 
 

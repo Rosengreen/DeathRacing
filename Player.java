@@ -8,8 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends SmoothMover
 {
+    private final int BOUNCE_TIMER = 2;
     private GreenfootImage image1;
-
+    private boolean canBounce;
+    private int timer;
+   
     /**
      * Create a player and initialize its image.
      */
@@ -18,7 +21,7 @@ public class Player extends SmoothMover
         super(keyUp,keyDown,keyLeft,keyRight);
         image1 = new GreenfootImage("Player10000.png");
         setImage(image1);
-        
+        canBounce = true;
     }
   
     /**
@@ -29,6 +32,8 @@ public class Player extends SmoothMover
     {
         smoothMove();
         checkKeypress();
+        collisionWall();
+        timerOn();
     }
     
     /**
@@ -47,4 +52,43 @@ public class Player extends SmoothMover
             turn(3);
         }
     }
+    
+    /**
+     * 
+     */
+    public void collisionWall()
+    {
+        Wall wall = (Wall) getOneObjectAtOffset(0, 0, Wall.class);
+        if(wall != null)
+        {
+            if(canBounce)
+            {
+                if(getSpeed() > 0)
+                {
+                    setSpeed(-1);                    
+                }
+                else
+                {
+                    setSpeed(1);
+                }
+                canBounce = false;
+            }            
+        }
+    }
+    
+    /**
+     * When the player can't bounce, starts a timer, when the timer reaches BOUNCE_TIMER. Set canBounce = true and reset timer.
+     */
+    private void timerOn()
+    {
+        if(!canBounce)
+        {
+            timer++;
+        }
+        if(timer > BOUNCE_TIMER)
+        {
+            canBounce = true;
+            timer = 0;
+        }
+    }        
 }
