@@ -90,4 +90,20 @@ public class SmoothMover extends Actor
         move(speed);
 
     }
+    
+    /**
+     * Sets the speed of the player.
+     */
+    public void setSpeed(double speed)
+    {
+        this.speed = speed;
+    }
+    
+    /**
+     * Return the speed of the player.
+     */
+    public double getSpeed()
+    {
+        return speed;
+    }
 }
