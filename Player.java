@@ -13,10 +13,13 @@ public class Player extends SmoothMover
     private GreenfootImage image1;
     private boolean canBounce;
     private int timer;
+<<<<<<< HEAD
     private int currentPowerUp;
     private PowerUp[] powerUpArray;
     private int player;
    
+=======
+>>>>>>> origin/GamePad
 
     /**
      * Create a player and initialize its image.
@@ -30,7 +33,7 @@ public class Player extends SmoothMover
         currentPowerUp = 0;
         powerUpArray = new PowerUp[AMOUNT_OF_POWER_UPS];
     }
-  
+
     /**
      * Act - do whatever the Player1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -43,14 +46,14 @@ public class Player extends SmoothMover
         timerOn();
         collisionPowerUp();
     }
-    
+
     /**
      * Check whether a control key on the keyboard has been pressed.
      * If it has, react accordingly.
      */
     public void checkKeypress()
     {
-        
+
         if (Greenfoot.isKeyDown(keyLeft) && super.speed > 0) 
         {
             turn(-3);
@@ -60,7 +63,7 @@ public class Player extends SmoothMover
             turn(3);
         }
     }
-    
+
     /**
      * 
      */
@@ -87,7 +90,7 @@ public class Player extends SmoothMover
             }            
         }
     }
-    
+
     /**
      * When the player can't bounce, starts a timer, when the timer reaches BOUNCE_TIMER. Set canBounce = true and reset timer.
      */
@@ -103,6 +106,7 @@ public class Player extends SmoothMover
             timer = 0;
         }
     }        
+<<<<<<< HEAD
     
     private void collisionPowerUp()
     {
@@ -126,4 +130,19 @@ public class Player extends SmoothMover
         
     }
     
+=======
+    /*
+    private String gamepad()
+    {
+    final GamePad pad1 = GamePad.getGamePads()[0];
+    if (pad1.isDown(GamePad.Button.R2))
+    {return "triggerR2";}
+    if (pad1.isDown(GamePad.Button.L2))
+    {return "triggerL2";}
+    final GamePad pad2 = GamePad.getGamePads()[1];
+    final GamePad pad3 = GamePad.getGamePads()[2];
+    final GamePad pad4 = GamePad.getGamePads()[3];
+    return null;
+    }*/
+>>>>>>> origin/GamePad
 }

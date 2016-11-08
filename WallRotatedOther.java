@@ -14,7 +14,7 @@ public class WallRotatedOther extends Wall
         this.getImage().rotate(135);
         this.getImage().setTransparency(0);
     }
-    
+
     /**
      * Act - do whatever the WallRotatedOther wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
