@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Wed Nov 09 10:35:57 CET 2016
+#Wed Nov 09 10:45:22 CET 2016
 target16.name=Mine
 editor.swing.0.y=-9
 editor.swing.0.x=-9
@@ -264,7 +264,7 @@ dependency7.from=DeathRaceWorld
 target6.width=80
 readme.width=47
 target20.width=120
-mainWindow.height=1098
+mainWindow.height=1092
 target9.naviview.expanded=true
 editor.swing.0.width=1938
 target14.showInterface=false
@@ -322,5 +322,5 @@ class.Wall.superclass=greenfoot.Actor
 target18.typeParameters=
 target19.showInterface=false
 target1.height=50
-mainWindow.width=1938
+mainWindow.width=1932
 target4.typeParameters=
