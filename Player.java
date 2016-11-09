@@ -8,9 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends SmoothMover
 {
+    private final int NO_POWER_UP = 0;
+    private final int MINE = 1;
+    private final int OIL = 2;
+    private final int MISSILE = 3;
     private final int AMOUNT_OF_POWER_UPS = 4;
     private final int BOUNCE_TIMER = 2;
-	private final String EMPTY_POWER_UP_FIELD = "emptyPowerUp.png";
+    private final String EMPTY_POWER_UP_FIELD = "emptyPowerUp.png";
     private GreenfootImage image1;
     private boolean canBounce;
     private int timer;
@@ -18,7 +22,7 @@ public class Player extends SmoothMover
     private PowerUp[] powerUpArray;
     private int player;
     private DisplayPowerUp displayField;
-	private String keyShoot;
+    private String keyShoot;
 
     /**
      * Create a player and initialize its image.
@@ -27,12 +31,12 @@ public class Player extends SmoothMover
     {        
         super(keyUp,keyDown,keyLeft,keyRight);
         this.player = player;
-		this.keyShoot = keyShoot;
+        this.keyShoot = keyShoot;
         displayField = display;
-		displayField.setImage(EMPTY_POWER_UP_FIELD);
+        displayField.setImage(EMPTY_POWER_UP_FIELD);
         setImage(image);
         canBounce = true;
-        currentPowerUp = 0;
+        currentPowerUp = NO_POWER_UP;
         powerUpArray = new PowerUp[AMOUNT_OF_POWER_UPS];
     }
 
@@ -47,7 +51,8 @@ public class Player extends SmoothMover
         collisionWall();
         timerOn();
         collisionPowerUp();
-		useWeapon();
+        useWeapon();
+        collisionMissile();
     }
 
     /**
@@ -110,9 +115,9 @@ public class Player extends SmoothMover
         }
     }
     
-	/**
-	*Pick up a powerUp when driving over one.
-	*/
+    /**
+    *Pick up a powerUp when driving over one.
+    */
     private void collisionPowerUp()
     {
         PowerUp powerUp = (PowerUp) getOneObjectAtOffset(0, 0, PowerUp.class);
@@ -125,44 +130,57 @@ public class Player extends SmoothMover
         }
     }
     
-	/**
-	*Checks if the player has a weapon. If yes, create a reference to a new weapon of the given type.
-	*/
+    /**
+    *Checks if the player has a weapon. If yes, return a reference to a new weapon of the given type.
+    */
     private Weapon getWeapon()
     {
-		Weapon weapon;
-		if(currentPowerUp != 0)
-		{
-			if(currentPowerUp == 1)
-			{
-				weapon = new Mine();
-			}
-			else if(currentPowerUp == 2)
-			{
-				weapon = new Oil();
-			}
-			else
-			{
-				weapon = new Missile(getRotation());
-			}
-		}
-		else
-		{
-			weapon = null;
-		}
-		return weapon;
+        Weapon weapon;
+        if(currentPowerUp != NO_POWER_UP)
+        {
+            if(currentPowerUp == MINE)
+            {
+                weapon = new Mine();
+            }
+            else if(currentPowerUp == OIL)
+            {
+                weapon = new Oil();
+            }
+            else
+            {
+                weapon = new Missile(getRotation());
+            }
+        }
+        else
+        {
+            weapon = null;
+        }
+        return weapon;
     }
-
-	private void useWeapon()
-	{
-		Weapon weapon = getWeapon();
-		if(weapon != null && Greenfoot.isKeyDown(keyShoot))
-		{
-			getWorld().addObject(weapon, getX(), getY());
-			displayField.setImage(EMPTY_POWER_UP_FIELD);
-			currentPowerUp = 0;
-		}
-	}
+    
+    /**
+     * If the player has a powerUp, use it when the shoot key is pressed.
+     */
+    private void useWeapon()
+    {
+        Weapon weapon = getWeapon();
+        if(weapon != null && Greenfoot.isKeyDown(keyShoot))
+        {
+            getWorld().addObject(weapon, getX(), getY());
+            displayField.setImage(EMPTY_POWER_UP_FIELD);
+            currentPowerUp = NO_POWER_UP;
+        }
+    }
+    
+    private void collisionMissile()
+    {
+        Missile missile = (Missile) getOneIntersectingObject(Missile.class);
+        if(missile != null && missile.getActivated() == true)
+        {
+            missile.setExplosionStarted(true);
+            getWorld().removeObject(this);
+        }
+    }
     
     
     /*

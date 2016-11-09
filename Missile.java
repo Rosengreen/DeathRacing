@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Missile extends Weapon
 {
+    private final int MISSILE_NUMBER = 3;
     private final int SWITCH_IMAGE = 10;
     private final int SWITCH_EXPLOSION_IMAGE = 10;
     private GreenfootImage imageOne;
@@ -127,5 +128,21 @@ public class Missile extends Weapon
             animation();
             timer = 0;
         }
+    }
+    
+    /**
+     * Return the number of the weapon to indentify it.
+     */
+    public int getNumberOfWeapon()
+    {
+        return MISSILE_NUMBER;
+    }
+    
+    /**
+     * Makes it able to start th explosion from outside the class.
+     */
+    public void setExplosionStarted(boolean explosionStarted)
+    {
+        this.explosionStarted = explosionStarted;
     }
 }

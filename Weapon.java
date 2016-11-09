@@ -6,13 +6,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Weapon extends Actor
+public abstract class Weapon extends Actor
 {
-    private boolean immune;
-    
+    private final int READY_TO_ACTIVATE = 5;
+    private boolean activated;
+    private int timer;
+        
     public Weapon()
     {
-        immune = true;
+        activated = false;
+        timer = 0;
     }
     
     /**
@@ -21,22 +24,37 @@ public class Weapon extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        controlTimer();
     }
     
     /**
-     * Sets the immune boolean.
+     * Sets the activated boolean.
      */
-    public void setImmune(boolean immune)
+    public void setActivate(boolean activate)
     {
-        this.immune = immune;
+        this.activated = activate;
     }
     
     /**
-     * Returns the immune boolean.
+     * Returns the activated boolean.
      */
-    public boolean getImmune()
+    public boolean getActivated()
     {
-        return immune;
+        return activated;
+    }
+    
+    /**
+     * If the weapon is not activated, then the timer counts up until the weapon is ready to be activated and activates it.
+     */
+    private void controlTimer()
+    {
+        if(!activated)
+        {
+            timer++;
+        }
+        if(timer == READY_TO_ACTIVATE)
+        {
+            activated = true;
+        }
     }
 }
