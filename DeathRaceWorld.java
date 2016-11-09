@@ -24,10 +24,10 @@ public class DeathRaceWorld extends World
         //setPaintOrder(First.class, Second.class, Third.class);
         Greenfoot.setSpeed(50);
         gameBackCounter = 0;
-        image1 = new GreenfootImage("Back10000.png");
-        image2 = new GreenfootImage("Back10000.png");
-        image3 = new GreenfootImage("Back10000.png");
-        image4 = new GreenfootImage("Back10000.png");
+        image1 = new GreenfootImage("DeathRaceBack0000.png");
+        image2 = new GreenfootImage("DeathRaceBack0001.png");
+        image3 = new GreenfootImage("DeathRaceBack0002.png");
+        //image4 = new GreenfootImage("Back10000.png");
         setBackground(image1);
         prepare();
     }
@@ -73,17 +73,17 @@ public class DeathRaceWorld extends World
         // Switching on the gameBackCounter to perform image changes.
         switch (gameBackCounter)
         {
-            case 1: setBackground ("Back10000.png");
+            case 1: setBackground ("DeathRaceBack0000.png");
             break;                    
-            case 20: setBackground ("Back10000.png");
+            case 20: setBackground ("DeathRaceBack0001.png");
             break;                   
-            case 40: setBackground ("Back10000.png");
+            case 40: setBackground ("DeathRaceBack0002.png");
             break;                     
-            case 60: setBackground ("Back10000.png");
+            case 60: setBackground ("DeathRaceBack0000.png");
             break;                     
-            case 80: setBackground ("Back10000.png");
+            case 80: setBackground ("DeathRaceBack0001.png");
             break;                                                               
-            case 100: setBackground ("Back10000.png");
+            case 100: setBackground ("DeathRaceBack0002.png");
             break;
             case 120: gameBackCounter = 0;
             break;

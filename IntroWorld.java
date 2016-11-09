@@ -61,7 +61,7 @@ public class IntroWorld extends World
         }
         else if (backCounter >= 0)
         {
-            setBackground ("StartPage0000.png");
+            setBackground ("StartPage0001.png");
         }
         if (backCounter == 10)
         {
