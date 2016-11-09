@@ -30,7 +30,7 @@ public class DeathRaceWorld extends World
         image4 = new GreenfootImage("Back10000.png");
         setBackground(image1);
         prepare();
-        setPaintOrder(Player.class);
+        setPaintOrder(Missile.class, Player.class);
     }
 
     /**

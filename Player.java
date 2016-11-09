@@ -51,8 +51,9 @@ public class Player extends SmoothMover
         collisionWall();
         timerOn();
         collisionPowerUp();
-        useWeapon();
         collisionMissile();
+        useWeapon();
+        
     }
 
     /**
@@ -167,6 +168,8 @@ public class Player extends SmoothMover
         if(weapon != null && Greenfoot.isKeyDown(keyShoot))
         {
             getWorld().addObject(weapon, getX(), getY());
+            weapon.setRotation(getRotation());
+            weapon.move(-25);
             displayField.setImage(EMPTY_POWER_UP_FIELD);
             currentPowerUp = NO_POWER_UP;
         }
